@@ -18,7 +18,6 @@ import React, { Component } from 'react';
 import { Grid } from 'semantic-ui-react';
 
 
-import RolesList from '../../components/layouts/RolesList';
 import TrackHeader from '../../components/layouts/TrackHeader';
 
 
@@ -36,18 +35,11 @@ export default class ApproverHome extends Component {
   render() {
     return (
       <Grid id='next-approver-grid' celled='internally'>
-
         <Grid.Column
           id='next-approver-grid-track-column'
-          width={10}>
+          width={16}>
           <TrackHeader title='Approval Home' {...this.props}/>
-          <RolesList {...this.props}/>
         </Grid.Column>
-        <Grid.Column
-          id='next-approver-grid-converse-column'
-          width={6}>
-        </Grid.Column>
-
       </Grid>
     );
   }

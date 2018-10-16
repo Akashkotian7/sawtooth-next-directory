@@ -22,8 +22,9 @@ import Immutable from 'seamless-immutable';
  * 
  * Actions
  * 
- * @property loginRequest
- * @property loginSuccess
+ * @property request  Initiating action
+ * @property success  Action called on execution success
+ * @property failure  Action called on execution failure
  * 
  */
 const { Types, Creators } = createActions({

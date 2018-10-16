@@ -1,4 +1,4 @@
-# Copyright 2017 Intel Corporation
+# Copyright 2018 Contributors to Hyperledger Sawtooth
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -26,14 +26,16 @@ RUN apt-get update && \
 RUN locale-gen en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 
+RUN pip3 install -U pip setuptools
+
 RUN pip3 install \
     pycodestyle \
     pylint \
     itsdangerous \
     rethinkdb \
     sanic \
-    pycrypto \
     pytest \
-    dredd-hooks
+    dredd-hooks \
+    cryptography
 
 WORKDIR /project/tmobile-rbac

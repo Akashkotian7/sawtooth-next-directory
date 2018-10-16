@@ -1,3 +1,6 @@
+# environment
+.env
+
 # OS
 .DS_Store
 
@@ -6,9 +9,6 @@ __pycache__/
 *.py[cod]
 *$py.class
 .pytest_cache/
-
-# Protobuf
-**/protobuf/
 
 # Jetbrains IDEs
 .idea/
@@ -55,6 +55,7 @@ nosetests.xml
 coverage.xml
 *.cover
 .hypothesis/
+coverage/
 
 # Translations
 *.mo
@@ -67,9 +68,6 @@ local_settings.py
 # Flask stuff:
 instance/
 .webassets-cache
-
-# Sanic stuff:
-config.py
 
 # Scrapy stuff:
 .scrapy
@@ -122,11 +120,7 @@ ENV/
 !.vscode/extensions.json
 
 # Node
-node_modules
-
-# UI
-ui/coverage
-ui/build
+node_modules/
 
 # NPM et al.
 npm-debug.log*
