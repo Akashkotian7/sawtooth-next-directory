@@ -14,11 +14,26 @@ limitations under the License.
 ----------------------------------------------------------------------------- */
 
 
-.next-nav-list-container {
-  margin-top: 20px;
-}
+import FixtureAPI from '../services/FixtureApi';
+import { call } from 'redux-saga/effects';
+import { getBase, getPack } from '../sagas/RequesterSaga';
 
-.next-nav-list-label {
-  color: var(--nav-heading-color);
-  font-size: 12px;
-}
+
+const stepper = (fn) => (mock) => fn.next(mock).value;
+
+test('getBase: first calls API', () => {
+  const step = stepper(getBase(FixtureAPI));
+  
+  expect(step()).toEqual(call(FixtureAPI.getRequesterBase));
+});
+
+
+test('getPack: first calls API', () => {
+  const id = 'e15a71ee-58d2-49e8-a8e4-21888144be1f';
+
+  const step = stepper(getPack(FixtureAPI, {
+    id: id
+  }));
+  
+  expect(step()).toEqual(call(FixtureAPI.getPack, id));
+});

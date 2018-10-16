@@ -14,11 +14,24 @@ limitations under the License.
 ----------------------------------------------------------------------------- */
 
 
-.next-nav-list-container {
-  margin-top: 20px;
-}
+import FixtureAPI from '../services/FixtureApi';
+import { call, put } from 'redux-saga/effects';
+import { login } from '../sagas/AuthSaga';
 
-.next-nav-list-label {
-  color: var(--nav-heading-color);
-  font-size: 12px;
-}
+
+const stepper = (fn) => (mock) => fn.next(mock).value;
+
+test('first calls API', () => {
+  const username = 'hello';
+  const password = 'world';
+
+  const step = stepper(login(FixtureAPI, {
+    username: username,
+    password: password
+  }));
+  
+  expect(step()).toEqual(call(FixtureAPI.login, {
+    username: username,
+    password: password
+  }));
+});
