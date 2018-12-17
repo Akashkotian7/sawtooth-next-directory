@@ -28,9 +28,10 @@ import PropTypes from 'prop-types';
 import './App.css';
 import Browse from '../browse/Browse';
 import Header from '../../components/layouts/Header';
-import Login from '../login/Login';
+import Login from '../login/Login'
 import Signup from '../signup/Signup';
 import Waves from '../../components/layouts/Waves';
+import EmailCard from '../../components/cards/EmailCard';
 
 
 import { appDispatch, appState } from './AppHelper';
@@ -218,8 +219,9 @@ class App extends Component {
     return (
       <Router>
         <div id='next-global-container'>
-          <Header {...this.props}/>
+          {/* <Header {...this.props}/> */}
           <Switch>
+            <Route exact path='/card' component={EmailCard}/>
             <Route exact path='/login' component={Login}/>
             <Route exact path='/signup' component={Signup}/>
             { !isAuthenticated && <Redirect to='/login'/> }

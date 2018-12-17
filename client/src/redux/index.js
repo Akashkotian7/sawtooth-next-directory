@@ -15,7 +15,7 @@ limitations under the License.
 
 
 import { combineReducers } from 'redux';
-import { loadingBarReducer } from 'react-redux-loading-bar';
+// import { loadingBarReducer } from 'react-redux-loading-bar';
 
 
 import { reducer as AppReducer } from './AppRedux';
@@ -33,7 +33,7 @@ const reducers = combineReducers({
   chat:       ChatReducer,
   requester:  RequesterReducer,
   user:       UserReducer,
-  loadingBar: loadingBarReducer,
+  // loadingBar: loadingBarReducer,
 });
 
 export default reducers;
