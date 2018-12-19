@@ -49,7 +49,7 @@ import {
   getAllRoles } from './RequesterSaga';
 
 
-import { closeSocket, openSocket } from './AppSaga';
+import { closeSocket, openSocket, reconnectSocket} from './AppSaga';
 import { login, signup, logout } from './AuthSaga';
 import { getConversation, sendMessage } from './ChatSaga';
 import { me, getUser, getUsers } from './UserSaga';
@@ -80,6 +80,7 @@ function * sagas () {
 
     // App
     takeLatest(AppTypes.SOCKET_OPEN, openSocket),
+    takeLatest(AppTypes.SOCKET_REOPEN, reconnectSocket),
     takeLatest(AppTypes.SOCKET_CLOSE, closeSocket),
 
     // Approver

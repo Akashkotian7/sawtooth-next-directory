@@ -37,12 +37,18 @@ export function * closeSocket () {
   yield channel.close();
 }
 
+export function * reconnectSocket (event) {
+  if (event.code===1005 ||event.code===1006)
+    yield call(openSocket);
+
+}
 
 const createChannel = (socket) =>
   eventChannel(emit => {
     socket.onerror = (event) => emit(AppActions.socketError(event));
     socket.onmessage = (event) => emit(ChatActions.messageReceive(event.data));
     socket.onopen = () => emit(AppActions.socketOpenSuccess(socket));
+    socket.onclose = (event) => reconnectSocket(event);
 
     return () => {
       socket.close();

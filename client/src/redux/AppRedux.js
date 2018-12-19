@@ -33,6 +33,7 @@ const { Types, Creators } = createActions({
   socketOpenSuccess:                 null,
   socketClose:                       null,
   socketCloseSuccess:                null,
+  socketReopen:                      null,
 
   refreshBegin:                      null,
   refreshEnd:                        null,
@@ -126,6 +127,8 @@ export const reducer = createReducer(INITIAL_STATE, {
 
   [Types.SOCKET_OPEN]: socketOpen,
   [Types.SOCKET_OPEN_SUCCESS]: socketOpenSuccess,
+
+  [Types.SOCKET_REOPEN]: socketOpen,
 
   [Types.SOCKET_CLOSE]: socketClose,
   [Types.SOCKET_CLOSE_SUCCESS]: socketCloseSuccess,

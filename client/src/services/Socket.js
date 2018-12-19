@@ -14,7 +14,7 @@ limitations under the License.
 ----------------------------------------------------------------------------- */
 
 
-export let socket;
+export let socket, num=0;
 
 
 const create = () =>
