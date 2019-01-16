@@ -1,0 +1,19 @@
+.delegation-entry {
+    width:25em;
+    display: flex;
+    justify-content: space-between;
+}
+#table-content {
+    width: 40%;
+    margin: 0 4em;
+}
+.table-cell {
+color: #FF1493;
+}
+#table-header {
+    opacity: 0.5;
+    font-weight: 500;
+}
+table#table-content td, table#table-content th{
+    padding: 1.5em 0.3em 0em;
+}

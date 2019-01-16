@@ -1,0 +1,32 @@
+.header-controller {
+    display: flex;
+}
+#Send-button {
+    float: right;
+    width: 10em;
+    height: 3em;
+    background-color: deeppink;
+
+}
+.role-search {
+    margin-top: 3em;
+}
+.input-box {
+    width: 38%;
+    margin-left: 4em;
+}
+.Header-content {
+    display: flex;
+    margin: 1.5em;
+}
+.header-name {
+    color: deeppink;
+    font-size: 2em;
+    font-family: sans-serif;
+    font-weight: bolder;
+}
+.left-icon {
+    color: deeppink;
+    padding: 0.2em;
+    margin-right: 0.2em;
+}

@@ -1,0 +1,15 @@
+#input-box-1
+{
+    border: 1px solid #999;
+}
+#input-box-2 {
+    border: 1px solid #999;
+    border-radius: 10px;
+    font-size: 1.2em;
+}
+.busterCards {
+    display: flex;
+}
+#Form-content {
+    width:42%;
+}

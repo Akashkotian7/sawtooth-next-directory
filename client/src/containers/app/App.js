@@ -31,6 +31,8 @@ import Login from 'containers/login/Login';
 import Signup from 'containers/signup/Signup';
 import Header from 'components/layouts/Header';
 import Waves from 'components/layouts/Waves';
+import DelegationStatus from 'components/forms/DelegationStatus';
+import NewDelegation from 'components/forms/NewDelegation';
 
 
 import { appDispatch, appState } from './AppHelper';
@@ -220,6 +222,8 @@ class App extends Component {
         <div id='next-global-container'>
           <Header {...this.props}/>
           <Switch>
+            <Route exact path='/Deligation' component={DelegationStatus}/>
+            <Route exact path='/Deligation2' component={NewDelegation}/>
             <Route exact path='/login' component={Login}/>
             <Route exact path='/signup' component={Signup}/>
             { !isAuthenticated && <Redirect to='/login'/> }

@@ -1,0 +1,42 @@
+.Delegation-role-container-1 {
+    border: 1px solid #999;
+    padding: 1em;
+    border-radius: 10px;
+    margin-bottom: 1.5em;
+}
+.delegation-main-container {
+   width: 70%;
+   margin: 3em auto 0;
+}
+#content-header {
+    margin: 1em 0;
+}
+.delegation-role-sub-1 {
+    display: flex;
+    justify-content: space-between;
+}
+.delegation-role-sub-2 {
+    display: flex;
+    justify-content: space-between;
+}
+.delegation-role-email {
+    display: flex;
+}
+.Roles-count {
+    font-weight: bold;
+    font-size:1.4em;
+}
+.spam-email{
+    color: deeppink;
+}
+.Roles-staus {
+    color: green;
+    font-weight: bold;
+}
+.Roles-staus1{
+    color: #DAA520;
+    font-weight: bold;
+}
+.delegation-note {
+    font-weight: bolder;
+}

@@ -1,0 +1,31 @@
+.header-sub-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 2em;
+}
+#image-pic {
+    width: 4em;
+    height: 4em;
+    opacity: 0.2;
+    font-family: sans-serif;
+}
+.header-main-container {
+    background: var(--auth-bg-color);
+}
+.title {
+    color: #ffffff;
+    font-size: 2.5em;
+}
+#required-button {
+    border: 1px solid white;
+    background: #ffffff;
+    border-radius: 10px;
+    color: deeppink;
+}
+.button-prop {
+    display: flex;
+}
+.button-content {
+    padding: 1em;
+    
+}
