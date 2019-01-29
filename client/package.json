@@ -12,6 +12,7 @@
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
+    "react-infinite-scroller": "^1.2.4",
     "react-redux": "^5.0.7",
     "react-redux-loading-bar": "^4.1.0",
     "react-router-dom": "^4.3.1",
@@ -48,14 +49,14 @@
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.7.0",
     "enzyme-to-json": "^3.3.4",
-    "react-test-renderer": "^16.6.3",
-    "sinon": "^7.1.1",
     "eslint": "5.6.0",
     "eslint-plugin-react": "^7.11.1",
     "jest-localstorage-mock": "^2.3.0",
     "jsdoc": "^3.5.5",
     "minami": "^1.2.3",
-    "semui-onyx": "^2.4.2-onyx.7"
+    "react-test-renderer": "^16.6.3",
+    "semui-onyx": "^2.4.2-onyx.7",
+    "sinon": "^7.1.1"
   },
   "browserslist": [
     ">0.2%",

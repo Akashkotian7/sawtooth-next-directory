@@ -17,6 +17,7 @@ limitations under the License.
 #next-global-container {
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 #next-root,

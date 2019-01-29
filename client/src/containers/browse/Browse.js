@@ -23,6 +23,7 @@ import {
   Header,
   Placeholder } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import InfiniteScroll from 'react-infinite-scroller';
 
 
 import './Browse.css';
@@ -51,6 +52,7 @@ class Browse extends Component {
   state = {
     start: 0,
     limit: 100,
+    hasMore: true,
   };
 
 
@@ -133,6 +135,23 @@ class Browse extends Component {
       (count, row) => count + row.length, 0
     );
   }
+  handleMoredata = () => {
+    let array=[];
+    let subarray=[];
+    console.log(this.props);
+    // const {browseData}= this.props;
+    // browseData.forEach((item,index)=>{
+    //   array=browseData[index];
+    //   array.forEach((item, index)=>{
+        
+    //     subarray=array[index];
+    //     console.log({array});
+    //     console.log({subarray});
+    //   })
+  
+    // })
+    // return ({browseData: this.props.browseData});
+  }
 
 
   /**
@@ -152,18 +171,29 @@ class Browse extends Component {
       !fetchingAllRoles && this.browseCount() === 0;
     const showData = this.browseCount() >= limit ||
       (!fetchingAllPacks && !fetchingAllRoles);
-
     return (
       <div id='next-browse-wrapper'>
         <Container fluid id='next-browse-container'>
-          <Grid stackable columns={4} id='next-browse-grid'>
-            { showData && browseData.map((column, index) => (
-              <Grid.Column key={index}>
-                {this.renderColumns(column)}
-              </Grid.Column>
-            ))}
-            {(fetchingAllPacks || fetchingAllRoles) && this.renderPlaceholder()}
-          </Grid>
+        {/* <div className="tableWrapper" ref={ref => this.scrollParentRef === ref}> */}
+          <InfiniteScroll
+            pageStart={0}
+            loadMore={this.handleMoredata}
+            dataLength={browseData.length}
+            hasMore={this.state.hasMore}
+            loader={<h4 style={{ textAlign: 'center' }}>Loading...</h4>}
+            useWindow={false}
+            getScrollParent={() => this.scrollParentRef}
+          >
+            <Grid stackable columns={4} id='next-browse-grid'>
+              { showData && browseData.map((column, index) => (
+                <Grid.Column key={index}>
+                  {this.renderColumns(column)}
+                </Grid.Column>
+              ))}
+              {(fetchingAllPacks || fetchingAllRoles) && this.renderPlaceholder()}
+            </Grid>
+          </InfiniteScroll>
+          {/* </div>> */}
           { this.browseCount() < rolesTotalCount && this.browseCount() !== 0 &&
             <Container
               id='next-browse-load-next-button'

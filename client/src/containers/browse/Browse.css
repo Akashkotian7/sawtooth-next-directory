@@ -18,6 +18,12 @@ limitations under the License.
   padding: 0.6rem;
 }
 
+
+.tableWrapper{
+  overflow:scroll;
+  height:500px;
+}
+
 #next-browse-container {
   padding: 50px 0 100px 0;
 }
