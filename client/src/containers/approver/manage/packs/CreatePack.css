@@ -46,6 +46,7 @@ limitations under the License.
 
 #next-create-pack-title-field {
   margin-bottom: 60px;
+  position: relative;
 }
 
 #next-approver-manage-create-pack-form .field label {
@@ -57,4 +58,12 @@ limitations under the License.
 #next-approver-manage-create-pack-form  h3 {
   color: var(--magenta);
   margin-bottom: 5px;
+}
+
+#Pack-error-label {
+  position: absolute;
+  top: 128px;
+  left: 100px;
+  background: none;
+  color: red;
 }

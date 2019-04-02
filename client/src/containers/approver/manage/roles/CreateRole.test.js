@@ -33,6 +33,8 @@ describe('CreateRole component', () => {
     submit: (username, password) => { },
     createRole: () => {},
     id: 'abc',
+    browseData: [[{roles: 'Akash Role 1'}]],
+    getAllRoles: (start) => {},
   };
   const wrapper = shallow(<CreateRole {...props}/>);
 
@@ -41,7 +43,7 @@ describe('CreateRole component', () => {
     ReactDOM.render(
       <Provider store={store}>
         <BrowserRouter>
-          <CreateRole/>
+          <CreateRole {...props}/>
         </BrowserRouter>
       </Provider>, div
     );

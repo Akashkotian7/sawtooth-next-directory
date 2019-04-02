@@ -16,7 +16,7 @@ limitations under the License.
 
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Form, Grid } from 'semantic-ui-react';
+import { Button, Form, Grid, Label } from 'semantic-ui-react';
 
 
 import './CreatePack.css';
@@ -39,6 +39,8 @@ class CreatePack extends Component {
     name:           '',
     selectedRoles:  [],
     validName:      null,
+    duplicateName: [],
+    duplicate: false,
   };
 
 
@@ -51,6 +53,7 @@ class CreatePack extends Component {
    */
   componentDidMount () {
     theme.apply(this.themes);
+    this.loadNext();
   }
 
 
@@ -61,6 +64,23 @@ class CreatePack extends Component {
     theme.remove(this.themes);
   }
 
+  /**
+   * Load next set of data
+   * @param {number} start Loading start index
+   */
+  loadNext = (start) => {
+    const { getAllPacks, browseData} = this.props;
+    const duplicateName = [];
+    for (let i = 0 ; i < browseData.length; i++){
+      for (let j = 0 ; j < browseData[i].length; j++){
+        if (browseData[i][j].packs === undefined)
+          duplicateName.push(browseData[i][j].name);
+      }
+    }
+    this.setState({duplicateName});
+    getAllPacks(start);
+
+  }
 
   /**
    * Create a new pack
@@ -125,7 +145,8 @@ class CreatePack extends Component {
    */
   validate = (name, value) => {
     name === 'name' &&
-      this.setState({ validName: value.length > 4 });
+      this.setState({ validName: (value.length > 4),
+        duplicate: (this.state.duplicateName.includes(value))});
   }
 
 
@@ -139,7 +160,8 @@ class CreatePack extends Component {
       description,
       name,
       selectedRoles,
-      validName } = this.state;
+      validName,
+      duplicate } = this.state;
 
     return (
       <Grid id='next-approver-grid'>
@@ -176,6 +198,10 @@ class CreatePack extends Component {
                     value={name}
                     placeholder='My Awesome Pack'
                     onChange={this.handleChange}/>
+                  {duplicate &&
+                  <Label id='Pack-error-label'>
+                        This Pack is already Exists
+                  </Label>}
                   <h3>
                     Description
                   </h3>
@@ -206,7 +232,7 @@ class CreatePack extends Component {
                   primary
                   size='large'
                   id='next-approver-manage-create-pack-done-button'
-                  disabled={!validName}
+                  disabled={(!validName || duplicate)}
                   content='Next'
                   onClick={() => this.setFlow(1)}/>
               }

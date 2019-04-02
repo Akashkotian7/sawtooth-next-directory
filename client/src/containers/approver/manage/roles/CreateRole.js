@@ -16,7 +16,7 @@ limitations under the License.
 
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Form, Grid } from 'semantic-ui-react';
+import { Button, Form, Grid, Label } from 'semantic-ui-react';
 
 
 import './CreateRole.css';
@@ -39,6 +39,8 @@ class CreateRole extends Component {
     description:    '',
     name:           '',
     validName:      null,
+    duplicateName: [],
+    duplicate: false,
   };
 
 
@@ -48,6 +50,7 @@ class CreateRole extends Component {
    */
   componentDidMount () {
     theme.apply(this.themes);
+    this.loadNext();
   }
 
 
@@ -56,6 +59,24 @@ class CreateRole extends Component {
    */
   componentWillUnmount () {
     theme.remove(this.themes);
+  }
+
+  /**
+   * Load next set of data
+   * @param {number} start Loading start index
+   */
+  loadNext = (start) => {
+    const { getAllRoles, browseData} = this.props;
+    const duplicateName = [];
+    for (let i = 0 ; i < browseData.length; i++){
+      for (let j = 0 ; j < browseData[i].length; j++) {
+        if (browseData[i][j].roles === undefined)
+          duplicateName.push(browseData[i][j].name);
+      }
+    }
+    this.setState({duplicateName});
+
+    getAllRoles(start);
   }
 
 
@@ -95,7 +116,8 @@ class CreateRole extends Component {
    */
   validate = (name, value) => {
     name === 'name' &&
-      this.setState({ validName: value.length > 4 });
+      this.setState({ validName: (value.length > 4),
+        duplicate: (this.state.duplicateName.includes(value))});
   }
 
 
@@ -104,7 +126,7 @@ class CreateRole extends Component {
    * @returns {JSX}
    */
   render () {
-    const { validName } = this.state;
+    const { validName, duplicate } = this.state;
     return (
       <Grid id='next-approver-grid'>
         <Grid.Column
@@ -137,6 +159,10 @@ class CreateRole extends Component {
                 name='name'
                 placeholder='My Awesome Role'
                 onChange={this.handleChange}/>
+              {duplicate &&
+                <Label id='Role-error-label'>
+                        This Role is already Exists
+                </Label>}
               <h3>
                 Description
               </h3>
@@ -155,7 +181,7 @@ class CreateRole extends Component {
                 size='large'
                 to='/approval/manage/roles'
                 id='next-approver-manage-create-role-done-button'
-                disabled={!validName}
+                disabled={(!validName || duplicate)}
                 onClick={this.createRole}>
                   Done
               </Button>

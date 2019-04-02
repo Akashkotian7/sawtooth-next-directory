@@ -33,6 +33,8 @@ describe('CreatePack component', () => {
     submit: (username, password) => { },
     userId: '',
     createPack: () => {},
+    browseData: [[{packs: 'Akash Pack 1'}]],
+    getAllPacks: (start) => {},
   };
   const wrapper = shallow(<CreatePack {...props}/>);
 
@@ -41,7 +43,7 @@ describe('CreatePack component', () => {
     ReactDOM.render(
       <Provider store={store}>
         <BrowserRouter>
-          <CreatePack/>
+          <CreatePack {...props}/>
         </BrowserRouter>
       </Provider>, div
     );
