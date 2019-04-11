@@ -15,7 +15,7 @@ limitations under the License.
 
 
 import React, { Component } from 'react';
-import { Popup } from 'semantic-ui-react';
+import { Popup, Message, Icon} from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import './Organization.css';
 import Avatar from 'components/layouts/Avatar';
@@ -264,9 +264,27 @@ class Organization extends Component {
    */
   render () {
     const { compact, id, organization } = this.props;
-    if (organization &&
-        organization.managers.length === 0)
-      return null;
+    if (organization){
+
+      if (organization.managers.length === 0 ||
+        organization.direct_reports === 0 || organization.peers === 0){
+        return (
+          <div className='organization-error-message-container'>
+            <Message icon>
+              <Icon name='ban' color='red'/>
+              <Message.Content>
+                <Message.Header id='next-message-error-header'>
+                  OOOOOPS!!!!!!
+                </Message.Header>
+                <p className='organization-error-message'>
+                You are not a member of an organization
+                </p>
+              </Message.Content>
+            </Message>
+          </div>
+        );
+      }
+    }
 
     if (!compact && organization && organization.id !== id)
       return null;
