@@ -225,17 +225,12 @@ class ChatForm extends Component {
                 ${index < 1 ? 'primary' : 'basic'}`}
               circular
               size='medium'
-              disabled={disabled}
               onClick={() =>
                 this.handleSend(this.createPayload(button.payload), false)}>
-
-              { !disabled &&
+              { (disabled || !disabled) &&
                 <span>
                   {button.title}
                 </span>
-              }
-              { disabled &&
-                <span></span>
               }
             </Button>
           ))
