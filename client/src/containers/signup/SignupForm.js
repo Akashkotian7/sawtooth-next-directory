@@ -22,6 +22,7 @@ import {
   Icon,
   Input,
   Transition } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { AuthActions, AuthSelectors } from 'state';
@@ -230,6 +231,14 @@ class SignupForm extends Component {
                   labelPosition='right'/>
               </Container>
             </Form>
+            <Container textAlign='center'>
+              <Link to='/login'>
+                <Form.Button
+                  content='back to login'
+                  icon='left arrow'
+                  labelPosition='left'/>
+              </Link>
+            </Container>
           </div>
         </Transition>
         <Transition
